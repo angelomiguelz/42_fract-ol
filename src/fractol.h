@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:22:39 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/01/30 18:28:26 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:27:09 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,6 @@
 typedef struct s_data {
 	void	*mlx;
 	void	*window;
-
-
-	void	*img;
-	char	*buf;
-	int		set;
-	double	min_r;
-	double	max_r;
-	double	min_i;
-	double	max_i;
-	double	kr;
-	double	ki;
-	double	sx;
-	double	rx;
-	double	fx;
-	int		*palette;
-	int		color_pattern;
-	int		color;
-
 }	t_data;
 
 
