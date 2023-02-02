@@ -6,7 +6,7 @@
 /*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:22:39 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/01/31 14:27:09 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/02/02 16:18:14 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,37 @@
 /* sets */
 # define MANDELBROT 1
 
-
+typedef struct s_img {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_size;
+	int		endian;
+	int		*palette;
+}	t_img;
 
 typedef struct s_data {
 	void	*mlx;
 	void	*window;
+	t_img	image;
+	char	f_set;
+	double	r_min;
+	double	r_max;
+	double	i_min;
+	double	i_max;	
+	char	*buf;
+
 }	t_data;
 
 
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
-int	clean_exit(t_data *f);
+int		clean_exit(t_data *f);
 int		key_handler(int key, t_data *mlx);
 void	default_data(t_data *data);
 void	start_init(t_data *data);
-void	help_msg(t_data *fractol);
+void	error_help(t_data *fractol);
+void	render(t_data *data);
+int		mandelbrot(double cr, double ci);
 
 #endif

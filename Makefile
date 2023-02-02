@@ -6,7 +6,7 @@
 #    By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 16:54:38 by mzarichn          #+#    #+#              #
-#    Updated: 2023/01/30 17:16:35 by mzarichn         ###   ########.fr        #
+#    Updated: 2023/01/31 15:29:39 by mzarichn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,8 @@ SRC	= ./src/fractol.c\
 	./src/start_utils.c\
 	./src/end_utils.c\
 	./src/help.c\
+	./src/mandelbrot.c\
+
 
 
 
