@@ -1,34 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_utils.c                                      :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:06:15 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/02/02 16:12:48 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/02/05 16:34:48 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-
-/*Puts default data into the structure for protection and debugging purposes*/
-void	default_data(t_data *data)
-{
-	data->mlx = NULL;
-	data->window = NULL;
-	data->f_set = MANDELBROT;
-}
-
-/*A clenear and more complete init and window starter with protections*/
-void	start_init(t_data *data)
-{
-	data->mlx = mlx_init();
-	/* TODO: Protect if mlx was initialized or not */
-	data->window = mlx_new_window(data->mlx, WIDTH, HEIGHT, "GABI E GAY");
-	/* TODO: Protect if window was initialized or not */
-}
 
 static void	set_pixel_color(int x, int y, int color, t_data *f)
 {
@@ -41,7 +23,7 @@ static void	set_pixel_color(int x, int y, int color, t_data *f)
 static int	calculate_iterations(double pixelr, double pixeli, t_data *fractol)
 {
 	int	iterations;
-
+	(void)fractol;
 	if (fractol->f_set == MANDELBROT)
 		iterations = mandelbrot(pixelr, pixeli);
 	return (iterations);
@@ -51,8 +33,8 @@ static int	calculate_iterations(double pixelr, double pixeli, t_data *fractol)
 //TODO: Calculate nbr of iteractions, set color accordengly, iterate each pixel
 void	render(t_data *data)
 {
-	double	x;
-	double	y;
+	int	x;
+	int	y;
 	double	pixelr;
 	double	pixeli;
 	int		iterations;
@@ -64,9 +46,9 @@ void	render(t_data *data)
 	{
 		x = -1;
 		while (++x < WIDTH)
-		{
-			pixelr = data->r_min + x * (data->r_max - data->r_min) / WIDTH;
-			pixeli = data->i_max + y * (data->i_min - data->i_max) / HEIGHT;
+		{ //Check when working if i can put just x double in int
+			pixelr = data->r_min + (double)x * (data->r_max - data->r_min) / WIDTH;
+			pixeli = data->i_max + (double)y * (data->i_min - data->i_max) / HEIGHT;
 			iterations = calculate_iterations(pixelr, pixeli, data);
 			set_pixel_color(x, y, data->image.palette[iterations], data);
 		}

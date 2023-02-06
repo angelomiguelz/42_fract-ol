@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+         #
+#    By: parallels <parallels@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 16:54:38 by mzarichn          #+#    #+#              #
-#    Updated: 2023/01/31 15:29:39 by mzarichn         ###   ########.fr        #
+#    Updated: 2023/02/05 16:13:17 by parallels        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,10 +36,11 @@ GREEN = \033[0;92m
 SRC	= ./src/fractol.c\
 	./src/utils.c\
 	./src/key_handler.c\
-	./src/start_utils.c\
-	./src/end_utils.c\
+	./src/render.c\
 	./src/help.c\
 	./src/mandelbrot.c\
+	./src/image.c\
+
 
 
 
