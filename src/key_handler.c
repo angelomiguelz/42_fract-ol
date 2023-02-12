@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:22:31 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/01/30 16:36:07 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:01:14 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	key_handler(int key, t_data *mlx)
 {
 	if (key == ESC_KEY)
 	{
-		clean_exit(mlx);
+		exit_(mlx);
 		return (0);
 	}
 	if (key == MOUSE_WHEEL_UP)

@@ -6,7 +6,7 @@
 /*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:22:39 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/02/06 14:45:03 by parallels        ###   ########.fr       */
+/*   Updated: 2023/02/09 15:01:27 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 #include <stdio.h>
 
 /* Dimensions */
-# define WIDTH 1080
-# define HEIGHT 1080
-# define MAX_ITERATIONS 22
+# define WIDTH 900
+# define HEIGHT 900
+# define MAX_ITERATIONS 50
 
 /* sets */
 # define MANDELBROT 1
@@ -55,13 +55,11 @@ typedef struct s_data {
 
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
-int		clean_exit(t_data *f);
+int		exit_(t_data *f);
 int		key_handler(int key, t_data *mlx);
-void	default_data(t_data *data);
 void	start(t_data *data);
 void	error_help(t_data *fractol);
 void	render(t_data *data);
 int		mandelbrot(double cr, double ci);
-void	color_shift(t_data *data);
 
 #endif

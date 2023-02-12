@@ -6,7 +6,7 @@
 #    By: parallels <parallels@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 16:54:38 by mzarichn          #+#    #+#              #
-#    Updated: 2023/02/05 16:13:17 by parallels        ###   ########.fr        #
+#    Updated: 2023/02/09 14:23:03 by parallels        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ SRC	= ./src/fractol.c\
 	./src/image.c\
 
 
-
+$(VERBOSE).SILENT:
 
 
 OBJ	= $(SRC:.c=.o)
@@ -52,23 +52,25 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 		@echo "$(RED)\nCompiling Printf..\n$(DEFAULT)"
-		make -C $(FT_PRINTF_PATH)
+		make -s -C $(FT_PRINTF_PATH)
 		@echo "$(GREEN)\nDone Compiling...\n$(DEFAULT)"
 		@echo "$(RED)\nCompiling MLX..\n$(DEFAULT)"
-		make -C minilibx-linux/
+		@make -s -C minilibx-linux/
 		$(CC) $(CFLAGS) $(OBJ) $(FT_PRINTF) $(LMLX_FLAGS) $(MLX_INCLUDE) -o $(NAME)
+		@clear
 		@echo "$(GREEN)\nDone Compiling...\n$(DEFAULT)"
 
 
 clean:
 		@echo "$(RED)\nCleaning...\n$(DEFAULT)"
 		$(RM) $(OBJ)
-		make clean -C $(FT_PRINTF_PATH)
+		make clean -s -C $(FT_PRINTF_PATH)
 		@echo "$(GREEN)\nDone Cleaning...\n$(DEFAULT)"
 
-fclean:			clean
-				$(RM) $(NAME)
-				make fclean -C $(FT_PRINTF_PATH)
-				@echo "$(GREEN)\nDone Function Cleaning...\n$(DEFAULT)"
+fclean:		clean
+			$(RM) $(NAME)
+			make -s fclean -C $(FT_PRINTF_PATH)
+			@clear
+			@echo "$(GREEN)\nDone Function Cleaning...\n$(DEFAULT)"
 		
 re:				fclean $(NAME)

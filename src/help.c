@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   help.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:16:53 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/02/02 14:54:18 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:02:18 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	error_help(t_data *fractol)
 {
 	printf("TUA MAE\n");
-	clean_exit(fractol);
+	exit_(fractol);
 }
