@@ -6,17 +6,17 @@
 /*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:22:31 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/02/09 15:01:14 by parallels        ###   ########.fr       */
+/*   Updated: 2023/02/14 11:15:09 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	key_handler(int key, t_data *mlx)
+int	key_handler(int key)
 {
 	if (key == ESC_KEY)
 	{
-		exit_(mlx);
+		exit_();
 		return (0);
 	}
 	if (key == MOUSE_WHEEL_UP)

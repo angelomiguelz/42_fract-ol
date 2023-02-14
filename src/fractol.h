@@ -6,7 +6,7 @@
 /*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:22:39 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/02/09 15:01:27 by parallels        ###   ########.fr       */
+/*   Updated: 2023/02/14 11:15:29 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_img {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
-	int		line_size;
+	int		line_length;
 	int		endian;
 	int		*palette;
 	int		color_pattern;
@@ -42,7 +42,6 @@ typedef struct s_img {
 typedef struct s_data {
 	void	*mlx;
 	void	*window;
-	t_img	image;
 	char	f_set;
 	double	r_min;
 	double	r_max;
@@ -53,13 +52,17 @@ typedef struct s_data {
 }	t_data;
 
 
-void	*ft_calloc(size_t count, size_t size);
-void	ft_bzero(void *s, size_t n);
-int		exit_(t_data *f);
-int		key_handler(int key, t_data *mlx);
-void	start(t_data *data);
-void	error_help(t_data *fractol);
-void	render(t_data *data);
+t_data	*data(void);
+t_img	*img(void);
+
+int		exit_();
+int		key_handler(int key);
+void	start();
+void	error_help();
+void	render();
 int		mandelbrot(double cr, double ci);
+void	my_mlx_pixel_put(int x, int y, int color);
+void	render_2();
+
 
 #endif

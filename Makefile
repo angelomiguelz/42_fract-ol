@@ -6,7 +6,7 @@
 #    By: parallels <parallels@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 16:54:38 by mzarichn          #+#    #+#              #
-#    Updated: 2023/02/09 14:23:03 by parallels        ###   ########.fr        #
+#    Updated: 2023/02/14 11:16:04 by parallels        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,6 @@ SRC	= ./src/fractol.c\
 	./src/utils.c\
 	./src/key_handler.c\
 	./src/render.c\
-	./src/help.c\
 	./src/mandelbrot.c\
 	./src/image.c\
 

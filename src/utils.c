@@ -6,50 +6,35 @@
 /*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:00:42 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/02/09 14:58:10 by parallels        ###   ########.fr       */
+/*   Updated: 2023/02/14 11:15:56 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	exit_(t_data *fractol)
+int	exit_()
 {
-	if (fractol->mlx && fractol->window)
+	if (data()->mlx && data()->window)
 	{
-		mlx_destroy_window(fractol->mlx, fractol->window);
-		mlx_loop_end(fractol->mlx);
+		mlx_destroy_window(data()->mlx, data()->window);
+		mlx_loop_end(data()->mlx);
 	}
 	exit(0); /*TODO: Search better way to exit*/
 	return (0);
 }
 
-void	start(t_data *data)
+void	start()
 {
-	data->mlx = mlx_init();
+	data()->mlx = mlx_init();
 	/* TODO: Protect if mlx was initialized or not */
-	data->window = mlx_new_window(data->mlx, WIDTH, HEIGHT, "GABI E GAY");
+	data()->window = mlx_new_window(data()->mlx, WIDTH, HEIGHT, "GABI E GAY");
 	/* TODO: Protect if window was initialized or not */
+	img()->img = mlx_new_image(data()->mlx, WIDTH, HEIGHT);
+	img()->addr = mlx_get_data_addr(img()->img, &img()->bits_per_pixel, &img()->line_length, &img()->endian);
 }
 
-void	ft_bzero(void *s, size_t n)
+void	error_help()
 {
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		*(((char *)s) + i) = 0;
-		i++;
-	}
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*ptr;
-
-	ptr = malloc (size * count);
-	if (ptr == 0)
-		return (ptr);
-	ft_bzero(ptr, size * count);
-	return (ptr);
+	printf("TUA MAE\n");
+	exit_(0);
 }
