@@ -6,7 +6,7 @@
 /*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:00:42 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/02/14 11:15:56 by parallels        ###   ########.fr       */
+/*   Updated: 2023/02/15 15:05:08 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	start()
 	/* TODO: Protect if mlx was initialized or not */
 	data()->window = mlx_new_window(data()->mlx, WIDTH, HEIGHT, "GABI E GAY");
 	/* TODO: Protect if window was initialized or not */
-	img()->img = mlx_new_image(data()->mlx, WIDTH, HEIGHT);
-	img()->addr = mlx_get_data_addr(img()->img, &img()->bits_per_pixel, &img()->line_length, &img()->endian);
+	//img()->img = mlx_new_image(data()->mlx, WIDTH, HEIGHT);
+	//img()->addr = mlx_get_data_addr(img()->img, &img()->bits_per_pixel, &img()->line_length, &img()->endian);
 }
 
 void	error_help()
