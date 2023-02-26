@@ -6,7 +6,7 @@
 /*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:22:39 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/02/14 11:15:29 by parallels        ###   ########.fr       */
+/*   Updated: 2023/02/26 17:00:21 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@
 
 /* Dimensions */
 # define WIDTH 900
-# define HEIGHT 900
-# define MAX_ITERATIONS 50
+# define HEIGHT 600
+# define MAX_ITERATIONS 100
 
 /* sets */
 # define MANDELBROT 1
+# define JULIA 2
+
 
 typedef struct s_img {
 	void	*img;
@@ -40,13 +42,10 @@ typedef struct s_img {
 }	t_img;
 
 typedef struct s_data {
+	int		set;
 	void	*mlx;
 	void	*window;
 	char	f_set;
-	double	r_min;
-	double	r_max;
-	double	i_min;
-	double	i_max;	
 	char	*buf;
 
 }	t_data;
@@ -63,6 +62,8 @@ void	render();
 int		mandelbrot(double cr, double ci);
 void	my_mlx_pixel_put(int x, int y, int color);
 void	render_2();
+int		julia(double cr, double ci);
+void	get_info(char *av);
 
 
 #endif

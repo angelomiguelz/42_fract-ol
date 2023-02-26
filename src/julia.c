@@ -1,46 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data.c                                          :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 11:32:03 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/02/13 14:13:44 by parallels        ###   ########.fr       */
+/*   Created: 2023/02/26 16:28:22 by parallels         #+#    #+#             */
+/*   Updated: 2023/02/26 16:36:51 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_data	*data(void)
+int	julia(double cr, double ci)
 {
-	static t_data data;
-	return (&data);
-}
+	int 	iterations;
+	double	zr;
+	double	zi;
+	double	first_zi;
 
-t_img	*img(void)
-{
-	static t_img img;
-	return (&img);
-}
-
-
-int main(int ac, char **av)
-{
-	(void)av;
-	(void)ac;
-	if (ac == 2)
+	iterations = 0;
+	zi = 0.0;
+	zr = 0.0;
+	//printf("cr: %f  |  ci: %f\n", cr, ci);
+	while (iterations < 200)
 	{
-		printf("%s\n", av[1]);
-		get_info(av[1]);
-		start();
-		render();
-
-		mlx_key_hook(data()->window, key_handler, data());
-		mlx_hook(data()->window, EVENT_CLOSE_BTN, 0, exit_, data());
-		mlx_loop(data()->mlx);
+		if (fabs(zr) > 4.0)
+			break ;
+		first_zi = 2 * zr * zi + ci;
+		zr = zr * zr - zi * zi + cr;
+		zi = first_zi;
+		iterations++;
 	}
-	else
-		error_help();
-	return (0);
+	return (iterations);
 }
