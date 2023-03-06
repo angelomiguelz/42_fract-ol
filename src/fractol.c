@@ -24,6 +24,13 @@ t_img	*img(void)
 	return (&img);
 }
 
+void	selector()
+{
+	if (data()->set == MANDELBROT)
+		render_mandelbrot();
+	if (data()->set == JULIA)
+		render_julia();
+}
 
 int main(int ac, char **av)
 {
@@ -32,9 +39,16 @@ int main(int ac, char **av)
 	if (ac == 2)
 	{
 		printf("%s\n", av[1]);
+
+		data()->zoomfactor = 1;
+		data()->mouse_x = WIDTH/2;
+		data()->mouse_y = HEIGHT/2;
+		data()->j_cr = -0.7;
+    	data()->j_ci = 0.27015;
+
 		get_info(av[1]);
 		start();
-		render();
+		selector();
 
 		mlx_key_hook(data()->window, key_handler, data());
 		mlx_hook(data()->window, EVENT_CLOSE_BTN, 0, exit_, data());
