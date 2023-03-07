@@ -6,7 +6,7 @@
 /*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:22:31 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/03/06 14:20:55 by parallels        ###   ########.fr       */
+/*   Updated: 2023/03/07 15:12:28 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,40 @@ int	key_handler(int key)
 		selector();
 	}
 	if (key == KEY_W)
-		zoom(data()->zoomfactor += 1);
+	{
+		data()->zoomfactor += 1.0;
+		selector();
+	}
 	if (key == KEY_S)
-		zoom(1.0 - (data()->zoomfactor - 1.0));
+	{
+		if (data()->zoomfactor == 1.0)
+		{
+			printf("PROTECTION\n");
+			return (0);
+		}
+		data()->zoomfactor -= 1.0;
+		selector();
+	}
+	if (key == LEFT)
+	{
+		data()->move_x -= 0.035;
+		selector();
+	}
+	if (key == RIGHT)
+	{
+		data()->move_x += 0.035;
+		selector();
+	}
+	if (key == UP)
+	{
+		data()->move_y -= 0.035;
+		selector();
+	}
+	if (key == DOWN)
+	{
+		data()->move_y += 0.035;
+		selector();
+	}
 	if (key == MOUSE_BTN)
 		mlx_mouse_get_pos(data()->mlx, data()->window, &data()->mouse_x, &data()->mouse_y);
 /* 	else

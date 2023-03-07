@@ -6,7 +6,7 @@
 /*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 12:43:54 by parallels         #+#    #+#             */
-/*   Updated: 2023/03/06 14:18:08 by parallels        ###   ########.fr       */
+/*   Updated: 2023/03/07 15:33:48 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,7 @@ void	my_mlx_pixel_put(int x, int y, int color)
 	*(unsigned int *)pixel = color;
 }
 
-
-void	image_init()
-{
-	img()->img = mlx_new_image(data()->mlx, WIDTH, HEIGHT);
-	if (!img()->img)
-	{
-		printf("NO IMAGE\n");	
-		exit_();
-	}
-	img()->addr = mlx_get_data_addr(img()->img, &img()->bits_per_pixel, &img()->line_length, &img()->endian);
-	if (!img()->addr)
-	{
-		printf("NO ADDR\n");
-	}
-
-	img()->palette = ft_calloc((MAX_ITERATIONS + 1), sizeof(int));
-	if (!img()->palette)
-	{
-		printf("NO PALLETE\n");
-		exit_();
-	}
-}
-
-double interpolate(double start, double end, double interpolation)
+/* double interpolate(double start, double end, double interpolation)
 {
     return start + ((end - start) * interpolation);
 }
@@ -71,4 +48,4 @@ void	zoom(double zoomFactor)
 	double mouseIm = to_complex(data()->mouse_y, 'I');
 
 	applyZoom(mouseRe, mouseIm, zoomFactor);
-}
+} */

@@ -6,7 +6,7 @@
 /*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:22:39 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/03/06 14:18:30 by parallels        ###   ########.fr       */
+/*   Updated: 2023/03/07 15:05:05 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,6 @@ typedef struct s_img {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	int		*palette;
-	int		color_pattern;
-	int		color;
 }	t_img;
 
 typedef struct s_data {
@@ -57,6 +54,8 @@ typedef struct s_data {
 	double  zoomfactor;
 	int		mouse_x;
 	int		mouse_y;
+	double	move_x;
+	double	move_y;
 
 }	t_data;
 

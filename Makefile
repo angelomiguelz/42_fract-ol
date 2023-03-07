@@ -6,7 +6,7 @@
 #    By: parallels <parallels@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 16:54:38 by mzarichn          #+#    #+#              #
-#    Updated: 2023/02/26 16:28:55 by parallels        ###   ########.fr        #
+#    Updated: 2023/03/07 15:32:28 by parallels        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	= fractol
 
 #---- Compilation:
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -Imlx -g
+CFLAGS = -Wall -Werror -Wextra -Imlx -g -fsanitize=address
 MILIB  = -I /usr/X11/include -g -L /usr/X11/lib -l minilibx-linux -framework OpenGL -framework AppKit
 
 #----- Printf:
@@ -37,9 +37,7 @@ SRC	= ./src/fractol.c\
 	./src/utils.c\
 	./src/key_handler.c\
 	./src/render.c\
-	./src/mandelbrot.c\
 	./src/image.c\
-	./src/julia.c\
 
 
 
@@ -56,8 +54,8 @@ $(NAME): $(OBJ)
 		make -s -C $(FT_PRINTF_PATH)
 		@echo "$(GREEN)\nDone Compiling...\n$(DEFAULT)"
 		@echo "$(RED)\nCompiling MLX..\n$(DEFAULT)"
-		@make -s -C minilibx-linux/
-		$(CC) $(CFLAGS) $(OBJ) $(FT_PRINTF) $(LMLX_FLAGS) $(MLX_INCLUDE) -o $(NAME)
+		@make -s -C minilibx-linux
+		$(CC) $(CFLAGS) $(OBJ) $(FT_PRINTF) $(LMLX_FLAGS) $(MLX_INCLUDE) -O3 -o $(NAME)
 		@clear
 		@echo "$(GREEN)\nDone Compiling...\n$(DEFAULT)"
 

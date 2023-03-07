@@ -6,7 +6,7 @@
 /*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:00:42 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/03/03 18:46:35 by parallels        ###   ########.fr       */
+/*   Updated: 2023/03/07 15:35:23 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,16 @@ void	start()
 {
 	data()->mlx = mlx_init();
 	data()->window = mlx_new_window(data()->mlx, WIDTH, HEIGHT, "GABI E GAY");
-	image_init();
-	get_set_coords();
+	img()->img = mlx_new_image(data()->mlx, WIDTH, HEIGHT);
+	img()->addr = mlx_get_data_addr(img()->img, &img()->bits_per_pixel, &img()->line_length, &img()->endian);
+
+	data()->zoomfactor = 1;
+	data()->mouse_x = WIDTH/2;
+	data()->mouse_y = HEIGHT/2;
+	data()->j_cr = -0.7;
+    data()->j_ci = 0.27015;
+	data()->move_x = 0.0;
+	data()->move_y = 0.0;
 }
 
 void	error_help()
@@ -40,14 +48,6 @@ void	error_help()
 	exit_();
 }
 
-double	to_complex(double coord, char flag)
-{
-	if (flag == 'R')
-		coord = data()->r_min + (double)coord * (data()->r_max - data()->r_min) / WIDTH;
-	if (flag == 'I')
-		coord = data()->i_max + (double)coord * (data()->i_min - data()->i_max) / HEIGHT;
-	return (coord);	
-}
 
 void	get_info(char *av)
 {
@@ -67,7 +67,16 @@ void	get_info(char *av)
 		error_help();
 }
 
-void	ft_bzero(void *s, size_t n)
+/* double	to_complex(double coord, char flag)
+{
+	if (flag == 'R')
+		coord = data()->r_min + (double)coord * (data()->r_max - data()->r_min) / WIDTH;
+	if (flag == 'I')
+		coord = data()->i_max + (double)coord * (data()->i_min - data()->i_max) / HEIGHT;
+	return (coord);	
+} */
+
+/* void	ft_bzero(void *s, size_t n)
 {
 	size_t	i;
 
@@ -88,4 +97,4 @@ void	*ft_calloc(size_t count, size_t size)
 		return (ptr);
 	ft_bzero(ptr, size * count);
 	return (ptr);
-}
+} */
