@@ -30,15 +30,13 @@ void	selector()
 		render_mandelbrot();
 	if (data()->set == JULIA)
 		render_julia();
-	if (data()->set == MANDELBOX)
-		render_mandelbox();
 }
 
 int main(int ac, char **av)
 {
 	if (ac == 2)
 	{
-		get_info(av[1]);
+		get_info(av);
 		start();
 		selector();
 

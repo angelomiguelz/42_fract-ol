@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+         #
+#    By: parallels <parallels@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 16:54:38 by mzarichn          #+#    #+#              #
-#    Updated: 2023/03/07 16:01:33 by mzarichn         ###   ########.fr        #
+#    Updated: 2023/03/08 17:54:21 by parallels        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,13 +39,9 @@ SRC	= ./src/fractol.c\
 	./src/render.c\
 	./src/image.c\
 
-
-
 $(VERBOSE).SILENT:
 
-
 OBJ	= $(SRC:.c=.o)
-
 
 all: $(NAME)
 
@@ -55,7 +51,7 @@ $(NAME): $(OBJ)
 		@echo "$(GREEN)\nDone Compiling...\n$(DEFAULT)"
 		@echo "$(RED)\nCompiling MLX..\n$(DEFAULT)"
 		@make -s -C minilibx-linux
-		$(CC) $(CFLAGS) $(OBJ) $(FT_PRINTF) $(LMLX_FLAGS) $(MLX_INCLUDE) -O3 -o $(NAME)
+		$(CC) $(CFLAGS) $(OBJ) $(FT_PRINTF_NAME) $(LMLX_FLAGS) $(MLX_INCLUDE) -O3 -o $(NAME)
 		mkdir objects && mv $(OBJ) objects
 		@clear
 		@echo "$(GREEN)\nDone Compiling...\n$(DEFAULT)"

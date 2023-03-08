@@ -1,0 +1,5 @@
+1 - The zoom goes to where the mouse is
+2 - Color range shift
+2.5 - changing keys changes the color
+3 - understand ab the julia set parameters
+4 - implement the ability for the user to set the parameters for the julia set

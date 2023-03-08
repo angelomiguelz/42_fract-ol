@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:00:42 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/03/08 15:24:08 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:55:26 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,32 +41,37 @@ void	start()
 
 void	error_help()
 {
-	printf("TUA MAE\n");
-	printf("Mete o M à frente\n");
-	printf("\n");
+	ft_printf("To use the fract-ol first choose the fractal:\n");
+	ft_printf("\n");
+	ft_printf("./fractol mandelbrot -> for the mandelbrot set\n");
+	ft_printf("./fractol julia -> for the julia set\n");
+	ft_printf("\n");
+	
+
 
 	exit_();
 }
 
-
-void	get_info(char *av)
+int		ft_strncmp(char *s1, char *s2)
 {
-	if(av[0] == 'J')
+	int	i;
+
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] && s2[i])
+		i++;
+	return (s1[i] - s2[i]);
+}
+
+void	get_info(char **av)
+{
+	if(ft_strncmp(av[1], "julia") == 0)
 	{
 		data()->set = JULIA;
-		printf("JULIA\n");
 		return;
 	}
-	if(av[0] == 'M')
+	if(ft_strncmp(av[1], "mandelbrot") == 0)
 	{
 		data()->set = MANDELBROT;
-		printf("MANDELBROT\n");
-		return;
-	}
-	if(av[0] == 'K')
-	{
-		data()->set = MANDELBOX;
-		printf("MANDELBOX\n");
 		return;
 	}
 	else
