@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: parallels <parallels@student.42.fr>        +#+  +:+       +#+         #
+#    By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 16:54:38 by mzarichn          #+#    #+#              #
-#    Updated: 2023/03/07 15:32:28 by parallels        ###   ########.fr        #
+#    Updated: 2023/03/07 16:01:33 by mzarichn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,13 +56,14 @@ $(NAME): $(OBJ)
 		@echo "$(RED)\nCompiling MLX..\n$(DEFAULT)"
 		@make -s -C minilibx-linux
 		$(CC) $(CFLAGS) $(OBJ) $(FT_PRINTF) $(LMLX_FLAGS) $(MLX_INCLUDE) -O3 -o $(NAME)
+		mkdir objects && mv $(OBJ) objects
 		@clear
 		@echo "$(GREEN)\nDone Compiling...\n$(DEFAULT)"
 
 
 clean:
 		@echo "$(RED)\nCleaning...\n$(DEFAULT)"
-		$(RM) $(OBJ)
+		@rm -rf objects
 		make clean -s -C $(FT_PRINTF_PATH)
 		@echo "$(GREEN)\nDone Cleaning...\n$(DEFAULT)"
 

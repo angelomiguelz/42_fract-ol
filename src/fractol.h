@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:22:39 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/03/07 15:05:05 by parallels        ###   ########.fr       */
+/*   Updated: 2023/03/08 15:23:43 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,15 @@
 #include <stdio.h>
 
 /* Dimensions */
-# define WIDTH 1200
+# define WIDTH 1400
 # define HEIGHT 900
 # define MAX_ITERATIONS 200
 
 /* sets */
 # define MANDELBROT 1
 # define JULIA 2
+# define MANDELBOX 3
+
 
 
 typedef struct s_img {
@@ -49,8 +51,8 @@ typedef struct s_data {
 	double	r_min;
 	double	i_max;
 	double	i_min;
-	double	j_cr;
-	double	j_ci;
+	double		j_cr;
+	double		j_ci;
 	double  zoomfactor;
 	int		mouse_x;
 	int		mouse_y;
@@ -81,6 +83,8 @@ void    julia_shift();
 void	render_julia();
 void	render_mandelbrot();
 void	selector();
+
+void	render_mandelbox();
 
 
 #endif

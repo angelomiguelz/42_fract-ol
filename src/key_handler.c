@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:22:31 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/03/07 15:12:28 by parallels        ###   ########.fr       */
+/*   Updated: 2023/03/08 14:42:47 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,28 @@ int	key_handler(int key)
 	}
 	if (key == ONE)
 	{
+		data()->move_x = 0.0;
+		data()->move_y = 0.0;
+		data()->zoomfactor = 1.0;
 		data()->set = MANDELBROT;
 		selector();
 	}
 	if (key == TWO)
 	{
+		data()->move_x = 0.0;
+		data()->move_y = 0.0;
+		data()->zoomfactor = 1.0;
+		data()->j_cr = -0.7;
+    	data()->j_ci = 0.27015;
 		data()->set = JULIA;
 		selector();
 	}
-	if (key == KEY_W)
+	if (key == KEY_I || key == MOUSE_WHEEL_UP)
 	{
 		data()->zoomfactor += 1.0;
 		selector();
 	}
-	if (key == KEY_S)
+	if (key == KEY_O || key == MOUSE_WHEEL_DOWN)
 	{
 		if (data()->zoomfactor == 1.0)
 		{
@@ -65,11 +73,32 @@ int	key_handler(int key)
 		selector();
 	}
 	if (key == MOUSE_BTN)
-		mlx_mouse_get_pos(data()->mlx, data()->window, &data()->mouse_x, &data()->mouse_y);
-/* 	else
+	{
+		if (data()->set == JULIA)
+		{
+			int x, y;
+			double x2, y2;
+
+			printf("%f , %f \n", data()->j_cr, data()->j_ci);
+			
+			mlx_mouse_get_pos(data()->mlx, data()->window, &x, &y);
+
+			x2 = 1.5 * (x - WIDTH / 2) / (0.5 * WIDTH);
+			y2 = (y - HEIGHT / 2) / (0.5 * HEIGHT);
+			
+			data()->j_ci = y2;
+			data()->j_cr = x2;
+
+			printf("%f , %f \n", data()->j_cr, data()->j_ci);
+
+			selector();
+		}
+	}
+/*  	else
 		printf("%i\n", key); */
 	return (0);
 }
+
 	/* if (key == KEY_D)
 	{
 		mlx_destroy_image(data()->mlx, img()->img);

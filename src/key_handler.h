@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:22:47 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/03/06 14:11:51 by parallels        ###   ########.fr       */
+/*   Updated: 2023/03/07 15:51:53 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
+# define KEY_I 105
+# define KEY_O 111
 # define KEY_PLUS 43
 # define KEY_MINUS 45
 # define LEFT 65361

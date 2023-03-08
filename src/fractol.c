@@ -30,6 +30,8 @@ void	selector()
 		render_mandelbrot();
 	if (data()->set == JULIA)
 		render_julia();
+	if (data()->set == MANDELBOX)
+		render_mandelbox();
 }
 
 int main(int ac, char **av)
@@ -42,6 +44,7 @@ int main(int ac, char **av)
 
 		mlx_key_hook(data()->window, key_handler, data());
 		mlx_hook(data()->window, EVENT_CLOSE_BTN, 0, exit_, data());
+		mlx_mouse_hook(data()->window, key_handler, data());
 		mlx_loop(data()->mlx);
 	}
 	else

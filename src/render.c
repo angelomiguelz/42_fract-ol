@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:06:15 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/03/07 15:01:19 by parallels        ###   ########.fr       */
+/*   Updated: 2023/03/08 16:07:40 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,84 @@ void	render_julia()
 				if((zr * zr + zi * zi) > 4) 
 					break;
 			}
-			//color = HSVtoRGB(ColorHSV(i % 256, 255, 255 * (i < MAX_ITERATIONS)));
 			my_mlx_pixel_put(x, y, get_color(i));
 		}
 	}
 	mlx_put_image_to_window(data()->mlx, data()->window, img()->img, 0, 0);
+}
+
+int	mandelbox(double cr, double ci);
+
+void	render_mandelbox()
+{
+	int		x;
+	int		y;
+	double	pr;
+	double	pi;
+	int		nb_iter;
+
+	mlx_clear_window(data()->mlx, data()->window);
+	y = -1;
+	while (++y < HEIGHT)
+	{
+		x = -1;
+		while (++x < WIDTH)
+		{
+			pr = 1.5 * (x - WIDTH / 2) / (0.5 *  WIDTH);
+   			pi = (y - HEIGHT / 2) / (0.5  * HEIGHT);
+			nb_iter = mandelbox(pr, pi);
+			get_color(nb_iter);
+		}
+	}
+	mlx_put_image_to_window(data()->mlx, data()->window, img()->img, 0, 0);
+}
+
+double	box_fold(double v)
+{
+	if (v > 1)
+		v = 2 - v;
+	else if (v < -1)
+		v = -2 - v;
+	return (v);
+}
+
+double	ball_fold(double r, double m)
+{
+	if (m < r)
+		m = m / (r * r);
+	else if (m < 1)
+		m = 1 / (m * m);
+	return (m);
+}
+
+/* mandelbox:
+*	Checks whether a complex number is part of the Mandelbox set or not.
+*	Takes as parameters the real and imaginary coordinates of a point,
+*	converted previously from a pixel's coordinates.
+*	Returns the number of iterations before the number escapes 
+*	the Mandelbox set, which can then be used to determine coloring.
+*/
+int	mandelbox(double cr, double ci)
+{
+	int		n;
+	double	vr;
+	double	vi;
+	double	mag;
+
+	vr = cr;
+	vi = ci;
+	mag = 0;
+	n = 0;
+	while (n < MAX_ITERATIONS)
+	{		
+		vr = 1.0 * box_fold(vr);
+		vi = 1.0 * box_fold(vi);
+		mag = sqrt(vr * vr + vi * vi);
+		vr = vr * 2.0 * ball_fold(0.5, mag) + cr;
+		vi = vi * 2.0 * ball_fold(0.5, mag) + ci;
+		if (sqrt(mag) > 2)
+			break ;
+		n++;
+	}
+	return (n);
 }

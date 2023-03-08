@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 16:00:42 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/03/07 15:35:23 by parallels        ###   ########.fr       */
+/*   Updated: 2023/03/08 15:24:08 by mzarichn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	start()
 	img()->img = mlx_new_image(data()->mlx, WIDTH, HEIGHT);
 	img()->addr = mlx_get_data_addr(img()->img, &img()->bits_per_pixel, &img()->line_length, &img()->endian);
 
-	data()->zoomfactor = 1;
+	data()->zoomfactor = 1.0;
 	data()->mouse_x = WIDTH/2;
 	data()->mouse_y = HEIGHT/2;
 	data()->j_cr = -0.7;
@@ -61,6 +61,12 @@ void	get_info(char *av)
 	{
 		data()->set = MANDELBROT;
 		printf("MANDELBROT\n");
+		return;
+	}
+	if(av[0] == 'K')
+	{
+		data()->set = MANDELBOX;
+		printf("MANDELBOX\n");
 		return;
 	}
 	else
