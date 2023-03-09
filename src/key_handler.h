@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzarichn <mzarichn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:22:47 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/03/07 15:51:53 by mzarichn         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:11:15 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@
 # define DOWN 65364
 # define ONE 49
 # define TWO 50
+# define NINE 57
+# define EIGHT 56
+# define SEVEN 55
 
 
 

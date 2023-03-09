@@ -6,7 +6,7 @@
 #    By: parallels <parallels@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/24 16:54:38 by mzarichn          #+#    #+#              #
-#    Updated: 2023/03/08 17:54:21 by parallels        ###   ########.fr        #
+#    Updated: 2023/03/09 16:51:05 by parallels        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	= fractol
 
 #---- Compilation:
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -Imlx -g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -Imlx -g #-fsanitize=address
 MILIB  = -I /usr/X11/include -g -L /usr/X11/lib -l minilibx-linux -framework OpenGL -framework AppKit
 
 #----- Printf:
@@ -37,7 +37,6 @@ SRC	= ./src/fractol.c\
 	./src/utils.c\
 	./src/key_handler.c\
 	./src/render.c\
-	./src/image.c\
 
 $(VERBOSE).SILENT:
 

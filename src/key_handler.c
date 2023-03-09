@@ -6,7 +6,7 @@
 /*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:22:31 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/03/08 16:43:19 by parallels        ###   ########.fr       */
+/*   Updated: 2023/03/09 17:13:09 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	key_handler(int key)
 		data()->zoomfactor = 1.0;
 		data()->set = MANDELBROT;
 		selector();
+		return (0);
 	}
 	if (key == TWO)
 	{
@@ -36,74 +37,79 @@ int	key_handler(int key)
     	data()->j_ci = 0.27015;
 		data()->set = JULIA;
 		selector();
+		return (0);
 	}
 	if (key == KEY_I || key == MOUSE_WHEEL_UP)
 	{
-		data()->zoomfactor += 1.0;
+		data()->zoomfactor += 0.5;
 		selector();
+		return (0);
 	}
 	if (key == KEY_O || key == MOUSE_WHEEL_DOWN)
 	{
 		if (data()->zoomfactor == 1.0)
-		{
-			printf("PROTECTION\n");
 			return (0);
-		}
-		data()->zoomfactor -= 1.0;
+		data()->zoomfactor -= 0.5;
 		selector();
+		return (0);
 	}
 	if (key == LEFT)
 	{
 		data()->move_x -= 0.035;
 		selector();
+		return (0);
 	}
 	if (key == RIGHT)
 	{
 		data()->move_x += 0.035;
 		selector();
+		return (0);
 	}
 	if (key == UP)
 	{
 		data()->move_y -= 0.035;
 		selector();
+		return (0);
 	}
 	if (key == DOWN)
 	{
 		data()->move_y += 0.035;
 		selector();
+		return (0);
 	}
 	if (key == MOUSE_BTN)
 	{
 		if (data()->set == JULIA)
 		{
 			int x, y;
-			double x2, y2;
-
-			printf("%f , %f \n", data()->j_cr, data()->j_ci);
-			
+			double x2, y2;			
 			mlx_mouse_get_pos(data()->mlx, data()->window, &x, &y);
 
 			x2 = 1.5 * (x - WIDTH / 2) / (0.5 * WIDTH);
 			y2 = (y - HEIGHT / 2) / (0.5 * HEIGHT);
-			
+
 			data()->j_ci = y2;
 			data()->j_cr = x2;
-
-			printf("%f , %f \n", data()->j_cr, data()->j_ci);
-
 			selector();
 		}
+		return (0);
 	}
-/*  	else
-		printf("%i\n", key); */
+	if (key == NINE)
+	{
+		img()->color = 1;
+		selector();
+	}
+	if (key == EIGHT)
+	{
+		img()->color = 2;
+		selector();
+	}
+	if (key == SEVEN)
+	{
+		img()->color = 3;
+		selector();
+	}
+	else
+		printf("%i\n", key);
 	return (0);
 }
-
-	/* if (key == KEY_D)
-	{
-		mlx_destroy_image(data()->mlx, img()->img);
-		data()->buf = NULL;
-		img()->img = mlx_new_image(data()->mlx, WIDTH, HEIGHT);
-		data()->buf = mlx_get_data_addr(img()->img, &img()->bits_per_pixel, &img()->line_length, &img()->endian);
-		mlx_put_image_to_window(data()->mlx, data()->window, img()->img, 0, 0);
-	} */

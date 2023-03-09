@@ -6,7 +6,7 @@
 /*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:22:39 by mzarichn          #+#    #+#             */
-/*   Updated: 2023/03/08 17:52:43 by parallels        ###   ########.fr       */
+/*   Updated: 2023/03/09 16:58:57 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_img {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		color;
 }	t_img;
 
 typedef struct s_data {
@@ -45,20 +46,12 @@ typedef struct s_data {
 	void	*mlx;
 	void	*window;
 	char	f_set;
-	char	*buf;
 
-	double	r_max;
-	double	r_min;
-	double	i_max;
-	double	i_min;
-	double		j_cr;
-	double		j_ci;
+	double	j_cr;
+	double	j_ci;
 	double  zoomfactor;
-	int		mouse_x;
-	int		mouse_y;
 	double	move_x;
 	double	move_y;
-
 }	t_data;
 
 
@@ -69,12 +62,9 @@ int		exit_();
 int		key_handler(int key);
 void	start();
 void	error_help();
-int		mandelbrot(double cr, double ci);
 void	my_mlx_pixel_put(int x, int y, int color);
-int		julia(double cr, double ci);
 void	get_info(char **av);
 void	image_init();
-void    julia_shift();
 void	render_julia();
 void	render_mandelbrot();
 void	selector();
